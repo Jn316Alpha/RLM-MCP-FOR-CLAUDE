@@ -28,9 +28,14 @@ DEFAULT_WINDOW = 120
 # Place your .txt or .md files in the state directory to use with rlm_init
 CORPORA_DIR = DEFAULT_STATE_DIR / "corpora"
 
+# Built-in example corpora (included with repository)
+_BUILTIN_CORPORA = {
+    "rlm_paper": str(INSTALL_DIR / "corpora" / "RLM_MIT.txt"),
+}
+
 # Available corpora (BYOKB - Bring Your Own Knowledge Base)
 # Users should place their files in CORPORA_DIR
-CORPORA = {}
+CORPORA = _BUILTIN_CORPORA.copy()
 
 def register_corpus(name: str, path: str | Path) -> bool:
     """

@@ -61,12 +61,10 @@ coverage.xml
 .hypothesis/
 .pytest_cache/
 
-# Corpora (users provide their own)
-corpora/
-*.txt
-*.md
-!README.md
-!LICENSE
+# Corpora: Include example corpora, exclude user-added ones
+.rlm_state/corpora/
+# But keep the built-in example corpora
+!corpora/
 
 # Temporary files
 *.tmp

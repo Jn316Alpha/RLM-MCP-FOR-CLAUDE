@@ -1,0 +1,9 @@
+# RLM MCP Server Requirements
+# Install with: pip install -r requirements.txt
+
+# MCP Framework
+mcp>=0.9.0
+
+# Optional: For advanced corpus processing
+numpy>=1.24.0
+pandas>=2.0.0

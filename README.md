@@ -24,9 +24,13 @@ This approach achieves **91%+ accuracy** on tasks that would otherwise exceed co
 
 RLM bridges the gap between standard reading and human research assistance by treating the document as a **computable environment** rather than static text.
 
+## Included Example Corpus
+
+This repository includes the **RLM research paper** (`corpora/RLM_MIT.txt`) as a starter corpus. This allows you to immediately test RLM capabilities and understand how recursive language models work.
+
 ## BYOKB: Bring Your Own Knowledge Base
 
-RLM does NOT ship with any built-in corpora. You must provide your own `.txt` or `.md` files:
+Beyond the included example, you can add your own `.txt` or `.md` files:
 
 1. Place your knowledge base files in `.rlm_state/corpora/`
 2. Or provide a full path when initializing
@@ -90,6 +94,35 @@ Then restart Claude Code.
 | `rlm_list_corpora` | List available corpora |
 | `rlm_reset` | Clear REPL state |
 | `rlm_get_buffers` | Get accumulated results |
+
+## Quick Start: Test with the RLM Paper
+
+Once you have RLM configured in Claude Code, try these example prompts to test it with the included research paper:
+
+### Example 1: Understand RLM Architecture
+```
+"Use RLM. Initialize with 'corpora/RLM_MIT.txt'. Explain the core architecture of Recursive Language Models and how they achieve inference-time scaling."
+```
+
+### Example 2: Find Key Results
+```
+"Use RLM. Initialize with 'corpora/RLM_MIT.txt'. What are the main experimental results showing RLM's accuracy compared to baseline methods?"
+```
+
+### Example 3: Extract Implementation Details
+```
+"Use RLM. Initialize with 'corpora/RLM_MIT.txt'. Use rlm_exec to search for and extract all mentions of 'prompt' or 'prompting' and explain how prompts are structured in RLM."
+```
+
+### Example 4: Compare Methods
+```
+"Use RLM. Initialize with 'corpora/RLM_MIT.txt'. Search for and compare the different baseline methods mentioned (RAG, long context, etc.) against RLM's approach."
+```
+
+### Example 5: Find Limitations
+```
+"Use RLM. Initialize with 'corpora/RLM_MIT.txt'. What limitations or failure cases are mentioned for Recursive Language Models?"
+```
 
 ## Practical Usage
 
@@ -243,10 +276,14 @@ rlm_mcp_for_claude/
 ├── chunker.py            # Chunking strategies
 ├── config.py             # Configuration
 ├── README.md             # This file
+├── LICENSE               # MIT License
+├── requirements.txt      # Dependencies
 ├── .gitignore
+├── corpora/              # Example corpora
+│   └── RLM_MIT.txt      # RLM research paper (included)
 └── .rlm_state/           # Created at runtime
     ├── state.pkl         # REPL state
-    └── corpora/          # BYOKB - place your files here
+    └── corpora/          # BYOKB - place your additional files here
 ```
 
 ## License
@@ -265,6 +302,42 @@ Contributions welcome! This is an open implementation of the RLM paradigm.
 
 For issues, questions, or feature requests, please use the GitHub issue tracker.
 
+## Example Claude Code Sessions
+
+### Session 1: Learning About RLM
+
+```
+User: "Use RLM. Initialize with 'corpora/RLM_MIT.txt' and summarize what Recursive Language Models are."
+
+Claude: [Calls rlm_init with the paper]
+[Uses rlm_query and rlm_peek to read the introduction]
+[Synthesizes a summary explaining that RLM treats long contexts as external environments
+ that can be examined programmatically through recursive Python execution]
+```
+
+### Session 2: Technical Deep Dive
+
+```
+User: "Use RLM. Find all mentions of 'accuracy' in the paper and report the quantitative results."
+
+Claude: [Calls rlm_init if not already loaded]
+[Uses rlm_grep with pattern "accuracy" to find all mentions]
+[Uses rlm_exec to extract and parse numerical results]
+[Returns a structured summary of all accuracy metrics from the experiments]
+```
+
+### Session 3: Comparative Analysis
+
+```
+User: "Use RLM. Compare how RLM handles 1M token contexts versus RAG (Retrieval-Augmented Generation)."
+
+Claude: [Uses rlm_exec to search for both '1M' and 'RAG' mentions]
+[Extracts comparison sections]
+[Creates a structured comparison table from the paper's findings]
+```
+
 ---
 
 **Remember**: RLM is a tool for **high-precision research**, not bulk text processing. Use it when you need specific, accurate answers from large knowledge bases.
+
+**Start with the included paper** to understand RLM's capabilities, then add your own corpora for your specific research needs.
