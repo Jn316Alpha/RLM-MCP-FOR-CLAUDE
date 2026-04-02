@@ -28,6 +28,29 @@ RLM bridges the gap between standard reading and human research assistance by tr
 
 This repository includes the **RLM research paper** (`corpora/RLM_MIT.txt`) as a starter corpus. This allows you to immediately test RLM capabilities and understand how recursive language models work.
 
+## Included Example Dataset
+
+This repository includes the **avocado prices dataset** (`examples/avocado.csv`) as a sample dataset for data science demonstrations. This ~2MB CSV file contains historical avocado price and sales volume data, perfect for testing RLM's analytical capabilities on tabular data.
+
+### Data Science Capabilities
+
+RLM includes **numpy** and **pandas** in the REPL environment, enabling sophisticated data analysis on large datasets without context window limitations.
+
+**Example 1: Statistical Analysis on Avocado Data**
+```
+"Use RLM. Initialize with 'examples/avocado.csv'. Calculate the average price by region and identify the top 5 regions with highest prices."
+```
+
+**Example 2: Time Series Operations**
+```
+"Use RLM. Initialize with 'examples/avocado.csv'. Plot the price trend over time for organic avocados and identify any seasonal patterns."
+```
+
+**Example 3: Filtering and Aggregation**
+```
+"Use RLM. Initialize with 'examples/avocado.csv'. Use rlm_exec to filter for only 2017 data, group by PLU code, and calculate total sales volume."
+```
+
 ## BYOKB: Bring Your Own Knowledge Base
 
 Beyond the included example, you can add your own `.txt` or `.md` files:
@@ -277,10 +300,12 @@ rlm_mcp_for_claude/
 ├── config.py             # Configuration
 ├── README.md             # This file
 ├── LICENSE               # MIT License
-├── requirements.txt      # Dependencies
+├── requirements.txt      # Dependencies (numpy, pandas, mcp)
 ├── .gitignore
 ├── corpora/              # Example corpora
 │   └── RLM_MIT.txt      # RLM research paper (included)
+├── examples/             # Example datasets
+│   └── avocado.csv      # Sample dataset for data science demos
 └── .rlm_state/           # Created at runtime
     ├── state.pkl         # REPL state
     └── corpora/          # BYOKB - place your additional files here
